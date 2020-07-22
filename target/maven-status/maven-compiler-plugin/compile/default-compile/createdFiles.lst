@@ -1,0 +1,8 @@
+hu\furediblog\dao\db\DatabaseSessionProvider.class
+hu\furediblog\dao\repository\AuthorRepositorty.class
+Main.class
+hu\furediblog\dao\entity\Authors.class
+hu\furediblog\dao\repository\EntryRepository.class
+hu\furediblog\controller\FormController.class
+hu\furediblog\controller\HomeController.class
+hu\furediblog\dao\repository\AbstractRepository.class

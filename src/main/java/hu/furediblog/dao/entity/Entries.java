@@ -8,9 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Table
 @Entity
-public class Entries{
+public class Entries implements BlogEntity{
  
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,6 +50,8 @@ public class Entries{
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+	
+	
 	public int getId() {
 		return id;
 	}

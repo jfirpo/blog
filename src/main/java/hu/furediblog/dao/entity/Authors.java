@@ -3,13 +3,23 @@ package hu.furediblog.dao.entity;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Table
 @Entity
-public class Authors {
-
-    @Id
+public class Authors implements BlogEntity{
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}	
 	private String name;
 	
 	public Authors() {		
@@ -21,16 +31,5 @@ public class Authors {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	
-	
+	}			
 }

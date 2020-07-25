@@ -6,12 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import hu.furediblog.dao.entity.Authors;
+
 import hu.furediblog.dao.entity.Entries;
 import hu.furediblog.service.BlogService;
 
 @Controller
 public class HomeController {
-
 	
 	BlogService blogService;
 	
@@ -39,13 +39,13 @@ public class HomeController {
 	@RequestMapping(path = "/authorDetails", method = RequestMethod.GET)
 	public String authorDetails(int id, Model model) {
 		model.addAttribute("auhorsStories", blogService.getEntryRepo().authorsEntries(id));
-		model.addAttribute("author", blogService.getAuthorRepo().selectAuthor(id));
+		model.addAttribute("author", blogService.getAuthorRepo().findById(id));
 		return "authorDetails";
 	}
 
 	@RequestMapping(path = "/deleteAuthor", method = RequestMethod.GET)
 	public String editAuthors(int id, Model model) {
-		author = blogService.getAuthorRepo().selectAuthor(id);
+		author = blogService.getAuthorRepo().findById(id);
 		blogService.getAuthorRepo().remove(author);
 		author = new Authors();
 		return authors(model);
@@ -61,7 +61,7 @@ public class HomeController {
 
 	@RequestMapping(path = "/editAuthor", method = RequestMethod.POST)
 	public String editAuthor(int id, String name, Model model) {
-		author = blogService.getAuthorRepo().selectAuthor(id);
+		author = blogService.getAuthorRepo().findById(id);
 		author.setName(name);
 		blogService.getAuthorRepo().update(author);
 		model.addAttribute("authors", blogService.getAuthorRepo().selectAll());
@@ -71,7 +71,7 @@ public class HomeController {
 
 	@RequestMapping(path = "/addEntryBox", method = RequestMethod.GET)
 	public String addEntryBox(int id, Model model) {
-		author = blogService.getAuthorRepo().selectAuthor(id);
+		author = blogService.getAuthorRepo().findById(id);
 		model.addAttribute("author", author);
 		return addstory(model);
 	}

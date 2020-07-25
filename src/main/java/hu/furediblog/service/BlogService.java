@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import hu.furediblog.dao.entity.Authors;
-import hu.furediblog.dao.entity.Entries;
+import hu.furediblog.dao.model.Authors;
+import hu.furediblog.dao.model.Entries;
 import hu.furediblog.dao.repository.AuthorRepository;
 import hu.furediblog.dao.repository.EntryRepository;
 
@@ -34,7 +34,6 @@ public class BlogService {
 	public EntryRepository getEntryRepo() {
 		return entryRepo;
 	}
-
 	
 	public List<Entries> getEntries() {
 		return entryRepo.selectAll();
@@ -42,7 +41,5 @@ public class BlogService {
 
 	public List<Authors> getAuthors() {
 		return authorRepo.selectAll();
-	}
-	
-	
+	}		
 }

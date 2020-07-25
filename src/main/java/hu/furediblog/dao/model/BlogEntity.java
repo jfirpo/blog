@@ -1,4 +1,4 @@
-package hu.furediblog.dao.entity;
+package hu.furediblog.dao.model;
 
 public interface BlogEntity {
 	int getId();

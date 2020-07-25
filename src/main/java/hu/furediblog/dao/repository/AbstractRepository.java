@@ -1,8 +1,8 @@
 package hu.furediblog.dao.repository;
 
 import hu.furediblog.dao.db.*;
-import hu.furediblog.dao.entity.BlogEntity;
-import hu.furediblog.dao.entity.Entries;
+import hu.furediblog.dao.model.BlogEntity;
+import hu.furediblog.dao.model.Entries;
 
 import java.util.List;
 

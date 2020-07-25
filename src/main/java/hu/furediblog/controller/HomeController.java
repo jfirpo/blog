@@ -5,9 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import hu.furediblog.dao.entity.Authors;
 
-import hu.furediblog.dao.entity.Entries;
+import hu.furediblog.dao.model.Authors;
+import hu.furediblog.dao.model.Entries;
 import hu.furediblog.service.BlogService;
 
 @Controller

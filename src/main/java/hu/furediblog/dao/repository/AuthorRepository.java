@@ -2,7 +2,7 @@ package hu.furediblog.dao.repository;
 
 import org.springframework.stereotype.Component;
 
-import hu.furediblog.dao.entity.Authors;
+import hu.furediblog.dao.model.Authors;
 
 
 @Component

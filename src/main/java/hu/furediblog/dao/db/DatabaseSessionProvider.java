@@ -6,9 +6,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import hu.furediblog.dao.entity.Authors;
-//import hu.furediblog.dao.entity.Entry;
-import hu.furediblog.dao.entity.Entries;
+import hu.furediblog.dao.model.Authors;
+import hu.furediblog.dao.model.Entries;
 
 import java.util.Properties;
 

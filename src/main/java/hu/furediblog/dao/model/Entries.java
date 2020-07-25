@@ -1,4 +1,4 @@
-package hu.furediblog.dao.entity;
+package hu.furediblog.dao.model;
 
 import java.util.Date;
 

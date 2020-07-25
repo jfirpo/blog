@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import hu.furediblog.dao.entity.*;
+import hu.furediblog.dao.model.*;
 
 @Component
 public class EntryRepository extends AbstractRepository<Entries> {

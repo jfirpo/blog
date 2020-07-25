@@ -7,15 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import hu.furediblog.dao.entity.Authors;
 import hu.furediblog.dao.entity.Entries;
-import hu.furediblog.dao.repository.AuthorRepository;
-import hu.furediblog.dao.repository.EntryRepository;
 import hu.furediblog.service.BlogService;
 
 @Controller
 public class HomeController {
 
-	AuthorRepository authorRepo = new AuthorRepository();
-	EntryRepository entryRepo = new EntryRepository();
 	
 	BlogService blogService;
 	
@@ -42,15 +38,15 @@ public class HomeController {
 
 	@RequestMapping(path = "/authorDetails", method = RequestMethod.GET)
 	public String authorDetails(int id, Model model) {
-		model.addAttribute("auhorsStories", entryRepo.authorsEntries(id));
-		model.addAttribute("author", authorRepo.selectAuthor(id));
+		model.addAttribute("auhorsStories", blogService.getEntryRepo().authorsEntries(id));
+		model.addAttribute("author", blogService.getAuthorRepo().selectAuthor(id));
 		return "authorDetails";
 	}
 
 	@RequestMapping(path = "/deleteAuthor", method = RequestMethod.GET)
 	public String editAuthors(int id, Model model) {
-		author = authorRepo.selectAuthor(id);
-		authorRepo.remove(author);
+		author = blogService.getAuthorRepo().selectAuthor(id);
+		blogService.getAuthorRepo().remove(author);
 		author = new Authors();
 		return authors(model);
 	}
@@ -58,24 +54,24 @@ public class HomeController {
 	@RequestMapping(path = "/addAuthor", method = RequestMethod.POST)
 	public String addAuthor(String name, Model model) {
 		author.setName(name);
-		authorRepo.save(author);
+		blogService.getAuthorRepo().save(author);
 		author = new Authors();
 		return authors(model);
 	}
 
 	@RequestMapping(path = "/editAuthor", method = RequestMethod.POST)
 	public String editAuthor(int id, String name, Model model) {
-		author = authorRepo.selectAuthor(id);
+		author = blogService.getAuthorRepo().selectAuthor(id);
 		author.setName(name);
-		authorRepo.update(author);
-		model.addAttribute("authors", authorRepo.selectAll());
+		blogService.getAuthorRepo().update(author);
+		model.addAttribute("authors", blogService.getAuthorRepo().selectAll());
 		author = new Authors();
 		return authors(model);
 	}
 
 	@RequestMapping(path = "/addEntryBox", method = RequestMethod.GET)
 	public String addEntryBox(int id, Model model) {
-		author = authorRepo.selectAuthor(id);
+		author = blogService.getAuthorRepo().selectAuthor(id);
 		model.addAttribute("author", author);
 		return addstory(model);
 	}
@@ -86,7 +82,7 @@ public class HomeController {
 
 		entry.setAuthor(id);
 		entry.setContent(content);
-		entryRepo.save(entry);
+		blogService.getEntryRepo().save(entry);
 		author = new Authors();
 		entry = new Entries();
 		return getStories(model);

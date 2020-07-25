@@ -25,8 +25,17 @@ public class BlogService {
 	@Autowired
 	public void setEntryRepo(EntryRepository entryRepo) {
 		this.entryRepo = entryRepo;
+	}		
+
+	public AuthorRepository getAuthorRepo() {
+		return authorRepo;
 	}
 
+	public EntryRepository getEntryRepo() {
+		return entryRepo;
+	}
+
+	
 	public List<Entries> getEntries() {
 		return entryRepo.selectAll();
 	}
@@ -34,5 +43,6 @@ public class BlogService {
 	public List<Authors> getAuthors() {
 		return authorRepo.selectAll();
 	}
+	
 	
 }

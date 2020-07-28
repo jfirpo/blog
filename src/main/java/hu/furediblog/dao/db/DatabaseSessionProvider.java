@@ -39,7 +39,7 @@ public class DatabaseSessionProvider {
         configObj.addAnnotatedClass(Entries.class);
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+        properties.put("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
         properties.put("hibernate.connection.url", "jdbc:mysql://localhost:3306/furedi_blog");
         properties.put("hibernate.connection.username", "root");
         properties.put("hibernate.connection.password", "");

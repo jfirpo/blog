@@ -1,34 +1,15 @@
 package hu.furediblog.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import hu.furediblog.dao.model.Authors;
-import hu.furediblog.dao.model.Entries;
-import hu.furediblog.service.BlogService;
 
 @Controller
-public class HomeController {
-	
-	BlogService blogService;
-	
-	
-	@Autowired
-	public void setBlogService(BlogService blogService) {
-		this.blogService = blogService;
-	}
-
-	Authors author = new Authors();
-	Entries entry = new Entries();
-
-	@RequestMapping(path = "/stories", method = RequestMethod.GET)
-	public String getStories(Model model) {
-		model.addAttribute("entries", blogService.getEntries());
-		return "stories";
-	}
+public class AuthorController extends AbstractController {
 
 	@RequestMapping(path = "/authors", method = RequestMethod.GET)
 	public String authors(Model model) {
@@ -45,9 +26,7 @@ public class HomeController {
 
 	@RequestMapping(path = "/deleteAuthor", method = RequestMethod.GET)
 	public String editAuthors(int id, Model model) {
-		author = blogService.getAuthorRepo().findById(id);
-		blogService.getAuthorRepo().remove(author);
-		author = new Authors();
+		blogService.getAuthorRepo().remove(blogService.getAuthorRepo().findById(id));
 		return authors(model);
 	}
 
@@ -69,29 +48,5 @@ public class HomeController {
 		return authors(model);
 	}
 
-	@RequestMapping(path = "/addEntryBox", method = RequestMethod.GET)
-	public String addEntryBox(int id, Model model) {
-		author = blogService.getAuthorRepo().findById(id);
-		model.addAttribute("author", author);
-		return addstory(model);
-	}
-
-	@RequestMapping(path = "/addEntryToDb", method = RequestMethod.POST)
-	public String addEntryToDb(int id, String content, Model model) {
-		author = new Authors();
-
-		entry.setAuthor(id);
-		entry.setContent(content);
-		blogService.getEntryRepo().save(entry);
-		author = new Authors();
-		entry = new Entries();
-		return getStories(model);
-	}
-
-	@RequestMapping(path = "/addstory", method = RequestMethod.GET)
-	public String addstory(Model model) {
-		model.addAttribute("author", author);
-		return "addstory";
-	}
 
 }

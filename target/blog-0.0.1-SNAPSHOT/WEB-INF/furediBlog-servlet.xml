@@ -7,10 +7,13 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-2.5.xsd"
        default-autowire="byName">
-    <context:component-scan base-package="hu.furediblog.controller"/>
+  
+      <context:component-scan base-package="hu.furediblog.controller, hu.furediblog.dao.repository, hu.furediblog.service"/>
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/resources/jsp/"/>
         <property name="suffix" value=".jsp"/>	
     </bean>
+
+
 </beans>

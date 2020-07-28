@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import hu.furediblog.dao.model.Authors;
 
 
-@Component
+
 public class AuthorRepository extends AbstractRepository<Authors> {
 
 	

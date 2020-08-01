@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -10,6 +12,7 @@
 
 	<context:component-scan
 		base-package="hu.furediblog.controller, hu.furediblog.dao.repository, hu.furediblog.service" />
+	
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
@@ -21,11 +24,10 @@
 	<bean id="blogService"
 		class="hu.furediblog.service.BlogService">
 		<property name="authorRepo">
-			<bean id="authorRepo" class="hu.furediblog.dao.repository.AuthorRepository" />
+			<bean id="authorRepo" class="hu.furediblog.dao.AuthorRepository" />
 		</property>
 		<property name="entryRepo">
-			<bean id="entryRepo" class="hu.furediblog.dao.repository.EntryRepository" />
+			<bean id="entryRepo" class="hu.furediblog.dao.EntryRepository" />
 		</property>		
-	</bean>
-
+	</bean>	
 </beans>

@@ -1,4 +1,4 @@
-package hu.furediblog.dao.db;
+package hu.furediblog.dao;
 
 import org.hibernate.Session;
 

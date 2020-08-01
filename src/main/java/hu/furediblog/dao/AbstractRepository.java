@@ -1,6 +1,5 @@
-package hu.furediblog.dao.repository;
+package hu.furediblog.dao;
 
-import hu.furediblog.dao.db.*;
 import hu.furediblog.dao.model.BlogEntity;
 
 
@@ -16,7 +15,7 @@ public abstract class AbstractRepository<T extends BlogEntity> {
 	protected Session getSession() {
         return DatabaseSessionProvider.getInstance().getSessionObj();
     }
-    
+		
     @SuppressWarnings("unchecked")
 	public List<T> selectAll() {
         return getSession().createQuery("from " + getManagedClass().getSimpleName()).list();
@@ -33,6 +32,7 @@ public abstract class AbstractRepository<T extends BlogEntity> {
         getSession().getTransaction().commit();
     }
 
+    
     public void update(T entity) {
         getSession().beginTransaction();
         getSession().update(entity);

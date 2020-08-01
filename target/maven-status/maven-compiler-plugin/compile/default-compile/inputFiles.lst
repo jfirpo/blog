@@ -1,9 +1,11 @@
 C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\dao\model\BlogEntity.java
 C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\dao\repository\AuthorRepository.java
+C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\dao\DatabaseSessionProvider.java
 C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\dao\model\Authors.java
 C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\dao\model\Entries.java
 C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\service\BlogService.java
-C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\dao\db\DatabaseSessionProvider.java
 C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\dao\repository\AbstractRepository.java
-C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\controller\HomeController.java
+C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\controller\AbstractController.java
+C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\controller\EntryController.java
 C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\dao\repository\EntryRepository.java
+C:\Users\Krisztián\Documents\blogworkspace\blog\src\main\java\hu\furediblog\controller\AuthorController.java

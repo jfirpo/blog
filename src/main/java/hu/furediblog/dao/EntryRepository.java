@@ -1,12 +1,8 @@
-package hu.furediblog.dao.repository;
+package hu.furediblog.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.stereotype.Component;
-
 import hu.furediblog.dao.model.*;
-
 
 public class EntryRepository extends AbstractRepository<Entries> {
 

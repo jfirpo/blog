@@ -1,6 +1,5 @@
-<html>
-<%--@elvariable id="auhorsStories" type="List<Entries>"--%>
-<%--@elvariable id="author" type="Authors"--%>
+<!DOCTYPE html>
+<%--@elvariable id="entries" type="List<Entries>"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=ISO-8859-1" language="java"%>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
@@ -10,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Napi furediBLOG</title>
+<title th:text="${pageTitle}">Napi furediBLOG</title>
 
 <link rel="stylesheet" th:href="@{css/main.css}"
 	href="../static/css/main.css" />
@@ -53,7 +52,7 @@
 
 
 		<article>
-			<c:forEach items="${auhorsStories}" var="entry">
+			<c:forEach items="${entries}" var="entry">
 				<header>
 					<h1>a Story</h1>
 					<p><c:out value="${entry.created}" /></p>
@@ -65,7 +64,7 @@
 
 				<footer>
 					<address>
-						Beküldte: <span><c:out value="${author.name}" /></span>
+						Beküldte: <span><c:out value="${entry.author}" /></span>
 					</address>
 				</footer>
 				<hr />
@@ -73,7 +72,7 @@
 		</article>
 
 		<footer>
-			<p>készült a furediBlog megbízásából</p>
+			<p th:text="#{footerText}">készült a furediBlog megbízásából</p>
 		</footer>
 
 	</div>

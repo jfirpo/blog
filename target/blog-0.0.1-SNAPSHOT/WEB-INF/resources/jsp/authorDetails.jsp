@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<%--@elvariable id="auhorsStories" type="List<Entries>"--%>
+<%--@elvariable id="author" type="Authors"--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=ISO-8859-1" language="java"%>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymleaf.org">
 <head>
@@ -6,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title th:text="${pageTitle}">Napi furediBLOG</title>
+<title>Napi furediBLOG</title>
 
 <link rel="stylesheet" th:href="@{css/main.css}"
 	href="../static/css/main.css" />
@@ -41,53 +45,35 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-5">
 					<p>
-						<a href="./furediBlog/authors">Authors</a>
-					</p>
-					<p>
-						<a href="./furediBlog/entries">Entries</a>
-					</p>
-					<p class="navbar-text navbar-right" th:text="#{yourip}">
-						IP címed: <a href="#" class="navbar-link">127.0.0.1</a>
+						<a href="authors">Authors</a>
 					</p>
 				</div>
 			</div>
 		</nav>
 
 
-		<article th:each="story : ${stories}">
-			<header>
-				<h1 th:text="${story.title}">Ez itt a cím</h1>
-				<p th:text="${#dates.format(story.posted, 'yyyy.MM.dd HH:mm')}">Posted
-					on September 31, 2015 at 10:00 PM</p>
-			</header>
+		<article>
+			<c:forEach items="${auhorsStories}" var="entry">
+				<header>
+					<h1>a Story</h1>
+					<p><c:out value="${entry.created}" /></p>
+				</header>
 
-			<section th:utext="${story.content}">
-				<p>Carl összeráncolta szemöldökét, és felnézett az égre.
-					Bármennyire is erőlködött, nem tudott egyetlen másodpercnél tovább
-					a nap felé nézni. Az égitest vakító ereje bevilágította a
-					környéket, emellett pedig szúrós meleg pontként szurkálta
-					halántékát mind a két oldalról.</p>
-				<p>-Feladom… - gondolta, majd tekintetét a játszótérre emelte.
-					Innen a nyolcadik emeletről tökéletesen be lehetett látni az egész
-					grundot. A háztömbök által körülölelt focipályán a gyerekek
-					nyüzsögtek reggeltől estig. Ha az egyiket elhívták a szülei, szinte
-					azonnal jött a helyére egy másik. A hajnalban még négy fős csapatok
-					délutánra nyolc tagúra dagadtak, naplemente előtt pedig már nem is
-					lehetett pontosan megállapítani, hogy melyik térfelen hány gyerek
-					szaladgál fel-alá.</p>
-				<p></p>
-			</section>
+				<section>
+					<p><c:out value="${entry.content}" /></p>					
+				</section>
 
-			<footer>
-				<address>
-					Beküldte: <span th:text="${story.blogger.name}">Anonymous</span>
-				</address>
-			</footer>
-			<hr />
+				<footer>
+					<address>
+						Bek�ldte: <span><c:out value="${author.name}" /></span>
+					</address>
+				</footer>
+				<hr />
+			</c:forEach>
 		</article>
 
 		<footer>
-			<p th:text="#{footerText}">Készült a Stark Industtries megbízásából</p>
+			<p>k�sz�lt a furediBlog megb�z�s�b�l</p>
 		</footer>
 
 	</div>

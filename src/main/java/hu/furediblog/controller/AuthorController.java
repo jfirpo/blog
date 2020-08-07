@@ -1,7 +1,4 @@
 package hu.furediblog.controller;
-
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,8 +40,7 @@ public class AuthorController extends AbstractController {
 	public String editAuthor(int id, String name, Model model) {
 		author = blogService.getAuthorRepo().findById(id);
 		author.setName(name);
-		blogService.getAuthorRepo().update(author);
-		//blogService.getAuthorRepo().update(author);
+		blogService.getAuthorRepo().update(author);		
 		model.addAttribute("authors", blogService.getAuthorRepo().selectAll());
 		author = new Authors();
 		return authors(model);

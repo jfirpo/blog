@@ -22,15 +22,7 @@
 	</bean>
 	
 
-	<bean id="blogService"
-		class="hu.furediblog.service.BlogService">
-		<property name="authorRepo">
-			<bean id="authorRepo" class="hu.furediblog.dao.AuthorRepository" />
-		</property>
-		<property name="entryRepo">
-			<bean id="entryRepo" class="hu.furediblog.dao.EntryRepository" />
-		</property>		
-	</bean>	
+	
 	
 	
 	<bean id="AuthorDao" class="hu.furediblog.dao.AuthorRepository"></bean>

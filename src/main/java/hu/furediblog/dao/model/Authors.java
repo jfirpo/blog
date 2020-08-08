@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Table
 @Entity
-public class Authors implements BlogEntity{
+public class Authors{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;

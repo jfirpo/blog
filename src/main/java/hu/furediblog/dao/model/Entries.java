@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Table
 @Entity
-public class Entries implements BlogEntity{
+public class Entries{
  
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

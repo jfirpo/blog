@@ -2,14 +2,19 @@ package hu.furediblog.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import hu.furediblog.dao.model.Authors;
 
 @Repository
-public class AuthorRepository extends AbstractRepository<Authors> implements AuthorDao {
+public class AuthorRepository implements AuthorDao {
 	
-    @Override
+    
+	protected Session getSession() {
+        return DatabaseSessionProvider.getInstance().getSessionObj();
+    }	
+	
     public Class<Authors> getManagedClass() {
         return Authors.class;
     }

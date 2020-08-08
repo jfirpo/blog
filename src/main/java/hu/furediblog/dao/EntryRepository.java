@@ -3,14 +3,18 @@ package hu.furediblog.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import hu.furediblog.dao.model.*;
 
 @Repository
-public class EntryRepository extends AbstractRepository<Entries> implements EntryDao{
+public class EntryRepository implements EntryDao{
 
-	@Override
+	protected Session getSession() {
+        return DatabaseSessionProvider.getInstance().getSessionObj();
+    }
+	
     public Class<Entries> getManagedClass(){
         return Entries.class;
     }	

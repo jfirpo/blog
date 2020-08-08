@@ -1,14 +1,36 @@
 package hu.furediblog.controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import hu.furediblog.dao.model.Authors;
+import hu.furediblog.dao.model.Entries;
+import hu.furediblog.service.AuthorService;
+import hu.furediblog.service.EntryService;
 
 @Controller
-public class AuthorController extends AbstractController {
+public class AuthorController{
 	
+	Authors author = new Authors();
+	Entries entry = new Entries();
+	
+	
+	AuthorService authorService;
+	EntryService entryService;
+	
+	@Autowired
+	public void setAuthorService(AuthorService authorService) {
+		this.authorService = authorService;
+	}
+
+	@Autowired
+	public void setEntryService(EntryService entryService) {
+		this.entryService = entryService;
+	}
+
+
 	@RequestMapping(path = "/authors", method = RequestMethod.GET)
 	public String authors(Model model) {
 		model.addAttribute("authors", authorService.listAuthors());

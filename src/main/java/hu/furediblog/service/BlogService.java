@@ -11,6 +11,7 @@ public class BlogService {
 	private AuthorRepository authorRepo;
 	private EntryRepository entryRepo;
 	
+
 	public void setAuthorRepo(AuthorRepository authorRepo) {
 		this.authorRepo = authorRepo;
 	}

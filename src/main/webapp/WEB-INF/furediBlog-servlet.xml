@@ -20,6 +20,7 @@
 		<property name="prefix" value="/WEB-INF/resources/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
 
 	<bean id="blogService"
 		class="hu.furediblog.service.BlogService">
@@ -29,5 +30,18 @@
 		<property name="entryRepo">
 			<bean id="entryRepo" class="hu.furediblog.dao.EntryRepository" />
 		</property>		
+	</bean>	
+	
+	
+	<bean id="AuthorDao" class="hu.furediblog.dao.AuthorRepository"></bean>
+	
+	<bean id="authorService" class="hu.furediblog.service.AuthorsServiceImpl">
+		<property name="authorDao" ref="AuthorDao"></property>
+	</bean>	
+
+	<bean id="EntryDao" class="hu.furediblog.dao.EntryRepository"></bean>
+	
+	<bean id="entryService" class="hu.furediblog.service.EntryServiceImpl">
+		<property name="entryDao" ref="EntryDao"></property>
 	</bean>	
 </beans>

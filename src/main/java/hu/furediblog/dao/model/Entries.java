@@ -15,8 +15,8 @@ public class Entries implements BlogEntity{
  
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private int id;	
+			
 	private int author;
 
 	private String content;
@@ -25,6 +25,11 @@ public class Entries implements BlogEntity{
 	public Entries() {		
 	}
 
+	public Entries(int id, String content) {
+		this.author = id;
+		this.content = content;
+	}
+	
 	public int getAuthor() {
 		return author;
 	}

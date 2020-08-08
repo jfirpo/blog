@@ -5,30 +5,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import hu.furediblog.dao.model.Authors;
-import hu.furediblog.dao.model.Entries;
-
 
 @Controller
 public class EntryController extends AbstractController {
-	
-	
+		
 	@RequestMapping(path = "/addEntryBox", method = RequestMethod.GET)
-	public String addEntryBox(int id, Model model) {
-		author = blogService.getAuthorRepo().findById(id);
-		model.addAttribute("author", author);
-		return addstory(model);
+	public String addEntryBox(int id, Model model) {				
+		model.addAttribute("author", authorService.getAuthorById(id));
+		return "addstory";
 	}
 
 	@RequestMapping(path = "/addEntryToDb", method = RequestMethod.POST)
-	public String addEntryToDb(int id, String content, Model model) {
-		author = new Authors();
-
-		entry.setAuthor(id);
-		entry.setContent(content);
-		blogService.getEntryRepo().save(entry);
-		author = new Authors();
-		entry = new Entries();
+	public String addEntryToDb(int id, String content, Model model) {										
+		entryService.addEntry(id, content);		
 		return getStories(model);
 	}
 
@@ -37,12 +26,4 @@ public class EntryController extends AbstractController {
 		model.addAttribute("entries", blogService.getEntries());
 		return "stories";
 	}
-	
-	
-	@RequestMapping(path = "/addstory", method = RequestMethod.GET)
-	public String addstory(Model model) {
-		model.addAttribute("author", author);
-		return "addstory";
-	}
-
 }

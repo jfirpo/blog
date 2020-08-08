@@ -1,10 +1,6 @@
 package hu.furediblog.dao.model;
 
-
 import javax.persistence.*;
-
-
-
 
 @Table
 @Entity
@@ -12,6 +8,8 @@ public class Authors implements BlogEntity{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+	
+	private String name;
 
 	public Authors() {		
 	}
@@ -24,7 +22,6 @@ public class Authors implements BlogEntity{
 	public void setId(int id) {
 		this.id = id;
 	}	
-	private String name;
 	
 
 	public String getName() {
@@ -33,5 +30,10 @@ public class Authors implements BlogEntity{
 
 	public void setName(String name) {
 		this.name = name;
-	}			
+	}
+
+
+	
+	
+	
 }

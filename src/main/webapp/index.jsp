@@ -8,7 +8,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-	<div class="sidebar">
+	<div class="navbar">
 		<a href="./furediBlog/stories"><i class="fa fa-newspaper-o"></i>
 			Stories</a> <a href="./furediBlog/authors"><i
 			class="fa fa-fw fa-user"></i> Authors</a>

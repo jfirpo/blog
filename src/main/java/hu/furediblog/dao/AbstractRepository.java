@@ -1,21 +1,19 @@
 package hu.furediblog.dao;
-
-import hu.furediblog.dao.model.BlogEntity;
-
-
 import java.util.List;
 
 import org.hibernate.Session;
 
 
-public abstract class AbstractRepository<T extends BlogEntity> {
+public abstract class AbstractRepository<T> {
 
 	public abstract Class<T> getManagedClass();
 	
 	protected Session getSession() {
         return DatabaseSessionProvider.getInstance().getSessionObj();
     }
-		
+
+	
+	
     @SuppressWarnings("unchecked")
 	public List<T> selectAll() {
         return getSession().createQuery("from " + getManagedClass().getSimpleName()).list();

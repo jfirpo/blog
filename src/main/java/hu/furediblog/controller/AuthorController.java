@@ -44,16 +44,6 @@ public class AuthorController{
 		return "authorDetails";
 	}
 
-	@RequestMapping(path = "/deleteAuthor", method = RequestMethod.POST)
-	public String editAuthors(String name, Authors author, Model model) {
-		author = authorService.getAuthorById(author.getId());
-		author.setName(name + " - " + author.getName());
-		authorService.updateAuthor(author);				
-		model.addAttribute("authors", authorService.listAuthors());
-		author = new Authors();
-		return authors(model);
-	}
-
 	@RequestMapping(path = "/addAuthor", method = RequestMethod.POST)
 	public String addAuthor(String name, Model model) {
 		author.setName(name);

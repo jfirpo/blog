@@ -3,9 +3,12 @@ package hu.furediblog.dao.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -16,8 +19,10 @@ public class Entries{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;	
-			
-	private int author;
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="author")
+	private Authors author;
 
 	private String content;
 	private Date created;
@@ -25,16 +30,16 @@ public class Entries{
 	public Entries() {		
 	}
 
-	public Entries(int id, String content) {
-		this.author = id;
+	public Entries(Authors author, String content) {
+		this.author = author;
 		this.content = content;
 	}
 	
-	public int getAuthor() {
+	public Authors getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(int author) {
+	public void setAuthor(Authors author) {
 		this.author = author;
 	}
 

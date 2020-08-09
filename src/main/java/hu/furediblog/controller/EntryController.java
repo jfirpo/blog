@@ -39,8 +39,8 @@ public class EntryController{
 	}
 
 	@RequestMapping(path = "/addEntryToDb", method = RequestMethod.POST)
-	public String addEntryToDb(int id, String content, Model model) {										
-		entryService.addEntry(id, content);		
+	public String addEntryToDb(Authors author, String content, Model model) {										
+		entryService.addEntry(author, content);		
 		return getStories(model);
 	}
 

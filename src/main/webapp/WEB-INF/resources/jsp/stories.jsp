@@ -31,7 +31,7 @@
 
 				<footer>
 					<address>
-						Beküldte: <span><c:out value="${entry.author}" /></span>
+						Beküldte: <span><c:out value="${entry.author.name}" /></span>
 					</address>
 				</footer>
 				<hr />

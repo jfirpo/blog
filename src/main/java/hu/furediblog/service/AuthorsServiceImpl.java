@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import hu.furediblog.dao.AuthorDao;
 import hu.furediblog.dao.model.Authors;
+import hu.furediblog.dao.model.Entries;
 
 public class AuthorsServiceImpl implements AuthorService{
 	private AuthorDao authorDao;
@@ -33,5 +34,14 @@ public class AuthorsServiceImpl implements AuthorService{
 
 	public void removeAuthor(int id) {
 		this.authorDao.removeAuthor(id);		
+	}
+
+	public List<Entries> authorsEntries(Authors author) {
+		return this.authorDao.getAuthorById(author.getId()).getEntries();
+		
+	}
+
+	public List<Authors> listActiveAuthors() {	
+		return this.authorDao.listActiveAuthors();
 	}
 }

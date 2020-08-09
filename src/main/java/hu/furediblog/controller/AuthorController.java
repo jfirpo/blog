@@ -33,20 +33,24 @@ public class AuthorController{
 
 	@RequestMapping(path = "/authors", method = RequestMethod.GET)
 	public String authors(Model model) {
-		model.addAttribute("authors", authorService.listAuthors());
+		model.addAttribute("authors", authorService.listActiveAuthors());
 		return "authors";
 	}
 
 	@RequestMapping(path = "/authorDetails", method = RequestMethod.GET)
 	public String authorDetails(int id, Model model) {
-		model.addAttribute("auhorsStories", entryService.authorsEntries(id));
+		model.addAttribute("auhorsStories", authorService.authorsEntries(authorService.getAuthorById(id)));
 		model.addAttribute("author", authorService.getAuthorById(id));
 		return "authorDetails";
 	}
 
-	@RequestMapping(path = "/deleteAuthor", method = RequestMethod.GET)
-	public String editAuthors(int id, Model model) {
-		authorService.removeAuthor(id);
+	@RequestMapping(path = "/deleteAuthor", method = RequestMethod.POST)
+	public String editAuthors(String name, Authors author, Model model) {
+		author = authorService.getAuthorById(author.getId());
+		author.setName(name + " - " + author.getName());
+		authorService.updateAuthor(author);				
+		model.addAttribute("authors", authorService.listAuthors());
+		author = new Authors();
 		return authors(model);
 	}
 

@@ -1,11 +1,10 @@
 package hu.furediblog.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import hu.furediblog.dao.EntryDao;
+import hu.furediblog.dao.model.Authors;
 import hu.furediblog.dao.model.Entries;
 
 public class EntryServiceImpl implements EntryService{
@@ -40,22 +39,8 @@ public class EntryServiceImpl implements EntryService{
 		
 	}
 	
-	public List<Entries> authorsEntries(int id){
-		List<Entries> entries= new ArrayList<Entries>();
-		for (Entries entry : listEntries()) {
-			if (entry.getAuthor() == id)
-				entries.add(entry);
-		}
-		return entries;
-	}
-
-	public void addEntry(int id, String content) {
-		this.entryDao.addEntry(id, content);
+	public void addEntry(Authors author, String content) {
+		this.entryDao.addEntry(author, content);
 		
 	}
-
-	
-		
-		
-
 }

@@ -18,6 +18,7 @@
 			Stories</a> <a href="authors"><i
 			class="fa fa-fw fa-user"></i> Authors</a>
 	</div>
+	
 	<article>
 		<c:forEach items="${auhorsStories}" var="entry">
 			<header>
@@ -35,7 +36,7 @@
 
 			<footer>
 				<address>
-					Beküldte: <span><c:out value="${author.name}" /></span>
+					Beküldte: <span><c:out value="${entry.author.name}" /></span>
 				</address>
 			</footer>
 			<hr />

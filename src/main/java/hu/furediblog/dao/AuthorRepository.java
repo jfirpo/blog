@@ -1,5 +1,6 @@
 package hu.furediblog.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -36,7 +37,16 @@ public class AuthorRepository implements AuthorDao {
 	public List<Authors> listAuthors() {		
 		return getSession().createQuery("from " + getManagedClass().getSimpleName()).list();
 	}
-
+	
+	public List<Authors> listActiveAuthors() {
+		List<Authors> authors = new ArrayList<Authors>();
+		for(Authors author : listAuthors()) {
+			if (!author.getName().contains("deleted author"))
+				authors.add(author);
+		}
+		return authors;
+	}
+	
 	public Authors getAuthorById(int id) {		
 		return (Authors) getSession().get(Authors.class, id);
 	}
@@ -45,5 +55,5 @@ public class AuthorRepository implements AuthorDao {
         getSession().beginTransaction();
         getSession().delete(getAuthorById(id));
         getSession().getTransaction().commit();				
-	}		
+	}
 }

@@ -1,5 +1,7 @@
 package hu.furediblog.dao.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Table
@@ -10,8 +12,16 @@ public class Authors{
     int id;
 	
 	private String name;
+	
+	@OneToMany(mappedBy = "author")
+	private List<Entries> entries;	
 
 	public Authors() {		
+	}
+
+
+	public List<Entries> getEntries() {
+		return entries;
 	}
 
 

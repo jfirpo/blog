@@ -3,6 +3,7 @@ package hu.furediblog.service;
 import java.util.List;
 
 import hu.furediblog.dao.model.Authors;
+import hu.furediblog.dao.model.Entries;
 
 public interface AuthorService {
 	public void addAuthor(Authors author);
@@ -10,4 +11,6 @@ public interface AuthorService {
 	public List<Authors> listAuthors();
 	public Authors getAuthorById(int id);
 	public void removeAuthor(int id);
+	public List<Entries> authorsEntries(Authors author);
+	public List<Authors> listActiveAuthors();
 }

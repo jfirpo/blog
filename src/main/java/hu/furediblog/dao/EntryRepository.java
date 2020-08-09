@@ -1,8 +1,6 @@
 package hu.furediblog.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -19,15 +17,6 @@ public class EntryRepository implements EntryDao{
         return Entries.class;
     }	
 			
-	public List<Entries> authorsEntries(int id){
-		List<Entries> entries= new ArrayList<Entries>();
-		for (Entries entry : listEntries()) {
-			if (entry.getAuthor() == id)
-				entries.add(entry);
-		}
-		return entries;
-	}
-
 	public void addEntry(Entries entry) {
 	       getSession().beginTransaction();
 	       getSession().save(entry);
@@ -58,9 +47,9 @@ public class EntryRepository implements EntryDao{
         getSession().getTransaction().commit();				
 	}
 
-	public void addEntry(int id, String content) {
+	public void addEntry(Authors author, String content) {
 		 getSession().beginTransaction();
-	     getSession().save(new Entries(id, content));
+	     getSession().save(new Entries(author, content));
 	     getSession().getTransaction().commit();
 		
 	}

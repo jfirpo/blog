@@ -33,12 +33,14 @@
 					<td><c:out value="${author.id}" /></td>
 					<td><c:out value="${author.name}" /></td>
 					<td>
-						<form action="deleteAuthor" method="GET">
-							<input type="hidden" name="id" value="${author.id}" /> <input
-								type="submit" value="Delete" />
+						<form action="editAuthor" method="POST">
+							<input type="hidden" name="name" value = "deleted author"/> <input type="hidden"
+								name="id" value="${author.id}" /> <input type="submit"
+								value="Delete" />
 						</form>
 					</td>
 					<td>
+					
 						<form action="editAuthor" method="POST">
 							Name: <input type="text" name="name" /> <input type="hidden"
 								name="id" value="${author.id}" /> <input type="submit"

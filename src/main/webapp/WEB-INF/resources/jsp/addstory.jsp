@@ -18,7 +18,7 @@
 		${author.name}'s  story 		
 		<br>
 		<textarea name="content" cols="60" rows="6">Here is your story's place... </textarea>
-		<input type="hidden" name="id" value="${author.id}" />
+		<input type="hidden" name="author" value="${author.id}" />
 		<br> <input type="submit" value="Add entry" />
 	</form>
 

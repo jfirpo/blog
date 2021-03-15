@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import hu.furediblog.dao.model.Authors;
+import hu.furediblog.dao.model.Entries;
 
 @Repository
 public class AuthorRepository implements AuthorDao {
@@ -55,5 +56,9 @@ public class AuthorRepository implements AuthorDao {
         getSession().beginTransaction();
         getSession().delete(getAuthorById(id));
         getSession().getTransaction().commit();				
+	}
+
+	public List<Entries> listauthorsEntries(Authors author) {		
+		return author.getEntries();
 	}
 }

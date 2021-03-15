@@ -9,38 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Napi furediBLOG</title>
-
-<link rel="stylesheet" href="../static/css/main.css" />
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-
-<link href='https://fonts.googleapis.com/css?family=Calibri'
-	rel='stylesheet' type='text/css' />
-<link href='https://fonts.googleapis.com/css?family=Exo'
-	rel='stylesheet' type='text/css' />
-
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 </head>
 <body>
-	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-example-navbar-collapse-5"
-						aria-expanded="false">
-						<span class="sr-only"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">furediblog.com</a>
-				</div>
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-5"></div>
-			</div>
-		</nav>
+	<div class="sidebar">
+		<a href="../"><i class="fa fa-fw fa-home"></i>Home</a>
+		 <a href="./stories"><i class="fa fa-newspaper-o"></i> Stories</a>		
+	</div>
 
 		${name} <br>
 		<form action="./addAuthor" method="POST">
@@ -56,12 +33,14 @@
 					<td><c:out value="${author.id}" /></td>
 					<td><c:out value="${author.name}" /></td>
 					<td>
-						<form action="deleteAuthor" method="GET">
-							<input type="hidden" name="id" value="${author.id}" /> <input
-								type="submit" value="Delete" />
+						<form action="editAuthor" method="POST">
+							<input type="hidden" name="name" value = "deleted author"/> <input type="hidden"
+								name="id" value="${author.id}" /> <input type="submit"
+								value="Delete" />
 						</form>
 					</td>
 					<td>
+					
 						<form action="editAuthor" method="POST">
 							Name: <input type="text" name="name" /> <input type="hidden"
 								name="id" value="${author.id}" /> <input type="submit"
@@ -69,7 +48,7 @@
 						</form>
 					</td>
 					<td>
-						<form action="addEntryBox" method="GET">
+						<form action="addEntry" method="GET">
 							<input type="hidden" name="id" value="${author.id}" /> <input
 								type="submit" value="Add entry" />
 						</form>
@@ -84,10 +63,5 @@
 				</tr>
 			</c:forEach>
 		</table>
-	</div>
-	<br>
-	<p>
-		<a href="stories">All of the stories</a>
-	</p>
 </body>
 </html>

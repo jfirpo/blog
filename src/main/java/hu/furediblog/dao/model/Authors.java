@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+//rename to BlogAuthorDto
 @Table
 @Entity
 public class Authors{
@@ -40,10 +41,5 @@ public class Authors{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-
-	
-	
-	
+	}	
 }

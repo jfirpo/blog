@@ -35,13 +35,19 @@ public class AuthorsServiceImpl implements AuthorService{
 	public void removeAuthor(int id) {
 		this.authorDao.removeAuthor(id);		
 	}
-
-	public List<Entries> authorsEntries(Authors author) {
-		return this.authorDao.getAuthorById(author.getId()).getEntries();
+/*
+	public List<BlogEntryDto> authorsEntries(Authors author) {
+		List<Entries> entries = this.authorDao.getAuthorById(author.getId()).getEntries();
+		//foreach -> authorMapper.map(author) -> add to new list
+		return entries; // mappelt lista
 		
 	}
-
+*/
 	public List<Authors> listActiveAuthors() {	
 		return this.authorDao.listActiveAuthors();
+	}
+
+	public List<Entries> authorsEntries(Authors author) {
+		return authorDao.listauthorsEntries(author);
 	}
 }

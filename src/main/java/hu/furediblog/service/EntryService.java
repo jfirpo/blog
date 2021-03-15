@@ -9,6 +9,7 @@ public interface EntryService {
 	public void addEntry(Entries entry);
 	public void updateEntry(Entries entry);
 	public List<Entries> listEntries();
+	public List<Entries> authorEntriesList(int author);
 	public Entries getEntryById(int id);
 	public void removeEntry(int id);
 	public void addEntry(Authors author, String content);	

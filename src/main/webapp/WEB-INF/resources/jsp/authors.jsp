@@ -48,7 +48,7 @@
 						</form>
 					</td>
 					<td>
-						<form action="addEntryBox" method="GET">
+						<form action="addEntry" method="GET">
 							<input type="hidden" name="id" value="${author.id}" /> <input
 								type="submit" value="Add entry" />
 						</form>

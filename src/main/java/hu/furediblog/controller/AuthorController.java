@@ -4,30 +4,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import hu.furediblog.dao.model.Authors;
-import hu.furediblog.dao.model.Entries;
 import hu.furediblog.service.AuthorService;
 import hu.furediblog.service.EntryService;
+
 
 @Controller
 public class AuthorController{
 	
-	Authors author = new Authors();
-	Entries entry = new Entries();
-	
-	
 	AuthorService authorService;
-	EntryService entryService;
+	EntryService entriesService;
 	
+	@Autowired
+	public void setEntriesService(EntryService entriesService) {
+		this.entriesService = entriesService;
+	}
+
+
 	@Autowired
 	public void setAuthorService(AuthorService authorService) {
 		this.authorService = authorService;
-	}
-
-	@Autowired
-	public void setEntryService(EntryService entryService) {
-		this.entryService = entryService;
 	}
 
 
@@ -37,28 +35,30 @@ public class AuthorController{
 		return "authors";
 	}
 
+	//entries az entriesService-bol authorId alapjan - pipa
 	@RequestMapping(path = "/authorDetails", method = RequestMethod.GET)
 	public String authorDetails(int id, Model model) {
-		model.addAttribute("auhorsStories", authorService.authorsEntries(authorService.getAuthorById(id)));
+		model.addAttribute("auhorsStories", entriesService.authorEntriesList(id));
 		model.addAttribute("author", authorService.getAuthorById(id));
 		return "authorDetails";
 	}
 
 	@RequestMapping(path = "/addAuthor", method = RequestMethod.POST)
-	public String addAuthor(String name, Model model) {
+	public ModelAndView addAuthor(String name, Model model) {
+		Authors author= new Authors();
 		author.setName(name);
 		authorService.addAuthor(author);
-		author = new Authors();
-		return authors(model);
+		return new ModelAndView("redirect:/furediBlog/authors");
 	}
 
+	//redirect - pipa
 	@RequestMapping(path = "/editAuthor", method = RequestMethod.POST)
-	public String editAuthor(int id, String name, Model model) {
+	public ModelAndView editAuthor(int id, String name, Model model) {
+		Authors author = new Authors();
 		author = authorService.getAuthorById(id);
 		author.setName(name);
 		authorService.updateAuthor(author);				
 		model.addAttribute("authors", authorService.listAuthors());
-		author = new Authors();
-		return authors(model);
+		return new ModelAndView("redirect:/furediBlog/authors");
 	}
 }

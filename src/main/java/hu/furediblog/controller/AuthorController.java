@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import hu.furediblog.dao.model.Authors;
+import hu.furediblog.dao.model.BlogAuthor;
 import hu.furediblog.service.AuthorService;
 import hu.furediblog.service.EntryService;
 
@@ -45,7 +45,7 @@ public class AuthorController{
 
 	@RequestMapping(path = "/addAuthor", method = RequestMethod.POST)
 	public ModelAndView addAuthor(String name, Model model) {
-		Authors author= new Authors();
+		BlogAuthor author= new BlogAuthor();
 		author.setName(name);
 		authorService.addAuthor(author);
 		return new ModelAndView("redirect:/furediBlog/authors");
@@ -54,7 +54,7 @@ public class AuthorController{
 	//redirect - pipa
 	@RequestMapping(path = "/editAuthor", method = RequestMethod.POST)
 	public ModelAndView editAuthor(int id, String name, Model model) {
-		Authors author = new Authors();
+		BlogAuthor author = new BlogAuthor();
 		author = authorService.getAuthorById(id);
 		author.setName(name);
 		authorService.updateAuthor(author);				

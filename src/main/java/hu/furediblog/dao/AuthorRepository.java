@@ -6,8 +6,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-import hu.furediblog.dao.model.Authors;
-import hu.furediblog.dao.model.Entries;
+import hu.furediblog.dao.model.BlogAuthor;
+import hu.furediblog.dao.model.BlogEntry;
 
 @Repository
 public class AuthorRepository implements AuthorDao {
@@ -17,17 +17,17 @@ public class AuthorRepository implements AuthorDao {
         return DatabaseSessionProvider.getInstance().getSessionObj();
     }	
 	
-    public Class<Authors> getManagedClass() {
-        return Authors.class;
+    public Class<BlogAuthor> getManagedClass() {
+        return BlogAuthor.class;
     }
     
-	public void addAuthor(Authors author) {
+	public void addAuthor(BlogAuthor author) {
 	       getSession().beginTransaction();
 	       getSession().save(author);
 	       getSession().getTransaction().commit();		
 	}
 
-	public void updateAuthor(Authors author) {
+	public void updateAuthor(BlogAuthor author) {
         getSession().beginTransaction();
         getSession().update(author);
         getSession().getTransaction().commit();
@@ -35,21 +35,21 @@ public class AuthorRepository implements AuthorDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Authors> listAuthors() {		
+	public List<BlogAuthor> listAuthors() {		
 		return getSession().createQuery("from " + getManagedClass().getSimpleName()).list();
 	}
 	
-	public List<Authors> listActiveAuthors() {
-		List<Authors> authors = new ArrayList<Authors>();
-		for(Authors author : listAuthors()) {
+	public List<BlogAuthor> listActiveAuthors() {
+		List<BlogAuthor> authors = new ArrayList<BlogAuthor>();
+		for(BlogAuthor author : listAuthors()) {
 			if (!author.getName().contains("deleted author"))
 				authors.add(author);
 		}
 		return authors;
 	}
 	
-	public Authors getAuthorById(int id) {		
-		return (Authors) getSession().get(Authors.class, id);
+	public BlogAuthor getAuthorById(int id) {		
+		return (BlogAuthor) getSession().get(BlogAuthor.class, id);
 	}
 
 	public void removeAuthor(int id) {
@@ -58,7 +58,7 @@ public class AuthorRepository implements AuthorDao {
         getSession().getTransaction().commit();				
 	}
 
-	public List<Entries> listauthorsEntries(Authors author) {		
+	public List<BlogEntry> listauthorsEntries(BlogAuthor author) {		
 		return author.getEntries();
 	}
 }

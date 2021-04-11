@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.persistence.*;
 
-//rename to BlogAuthorDto
+//rename to BlogAuthor - pipa
 @Table
 @Entity
-public class Authors{
+public class BlogAuthor{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
@@ -15,13 +15,13 @@ public class Authors{
 	private String name;
 	
 	@OneToMany(mappedBy = "author")
-	private List<Entries> entries;	
+	private List<BlogEntry> entries;	
 
-	public Authors() {		
+	public BlogAuthor() {		
 	}
 
 
-	public List<Entries> getEntries() {
+	public List<BlogEntry> getEntries() {
 		return entries;
 	}
 

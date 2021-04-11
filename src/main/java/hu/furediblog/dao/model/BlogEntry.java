@@ -11,10 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//rename to BlogEntry
+//rename to BlogEntry - pipa
 @Table
 @Entity
-public class Entries{
+public class BlogEntry{
  
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,24 +22,24 @@ public class Entries{
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="author")
-	private Authors author;
+	private BlogAuthor author;
 
 	private String content;
 	private Date created;
 	
-	public Entries() {		
+	public BlogEntry() {		
 	}
 
-	public Entries(Authors author, String content) {
+	public BlogEntry(BlogAuthor author, String content) {
 		this.author = author;
 		this.content = content;
 	}
 	
-	public Authors getAuthor() {
+	public BlogAuthor getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(Authors author) {
+	public void setAuthor(BlogAuthor author) {
 		this.author = author;
 	}
 

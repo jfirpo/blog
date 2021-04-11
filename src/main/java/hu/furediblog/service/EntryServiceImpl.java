@@ -4,8 +4,8 @@ package hu.furediblog.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import hu.furediblog.dao.EntryDao;
-import hu.furediblog.dao.model.Authors;
-import hu.furediblog.dao.model.Entries;
+import hu.furediblog.dao.model.BlogAuthor;
+import hu.furediblog.dao.model.BlogEntry;
 
 public class EntryServiceImpl implements EntryService{
 	
@@ -16,21 +16,21 @@ public class EntryServiceImpl implements EntryService{
 		this.entryDao = entryDao;
 	}
 
-	public void addEntry(Entries entry) {
+	public void addEntry(BlogEntry entry) {
 		this.entryDao.addEntry(entry);
 		
 	}
 
-	public void updateEntry(Entries entry) {
+	public void updateEntry(BlogEntry entry) {
 		this.entryDao.updateEntry(entry);
 		
 	}
 
-	public List<Entries> listEntries() {		
+	public List<BlogEntry> listEntries() {		
 		return this.entryDao.listEntries();
 	}
 
-	public Entries getEntryById(int id) {
+	public BlogEntry getEntryById(int id) {
 		return this.entryDao.getEntryById(id);
 	}
 
@@ -39,12 +39,12 @@ public class EntryServiceImpl implements EntryService{
 		
 	}
 	
-	public void addEntry(Authors author, String content) {
+	public void addEntry(BlogAuthor author, String content) {
 		this.entryDao.addEntry(author, content);
 		
 	}
 
-	public List<Entries> authorEntriesList(int author) {
+	public List<BlogEntry> authorEntriesList(int author) {
 		// TODO Auto-generated method stub
 		return this.entryDao.listAuthorEntries(author);
 	}

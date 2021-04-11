@@ -1,15 +1,15 @@
 package hu.furediblog.dao;
 import java.util.List;
-import hu.furediblog.dao.model.Authors;
-import hu.furediblog.dao.model.Entries;
+import hu.furediblog.dao.model.BlogAuthor;
+import hu.furediblog.dao.model.BlogEntry;
 
 public interface AuthorDao {
 
-	public void addAuthor(Authors author);
-	public void updateAuthor(Authors author);
-	public List<Authors> listAuthors();
-	public Authors getAuthorById(int id);
+	public void addAuthor(BlogAuthor author);
+	public void updateAuthor(BlogAuthor author);
+	public List<BlogAuthor> listAuthors();
+	public BlogAuthor getAuthorById(int id);
 	public void removeAuthor(int id);
-	public List<Authors> listActiveAuthors();
-	public List<Entries> listauthorsEntries(Authors author);
+	public List<BlogAuthor> listActiveAuthors();
+	public List<BlogEntry> listauthorsEntries(BlogAuthor author);
 }

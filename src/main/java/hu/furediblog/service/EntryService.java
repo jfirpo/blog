@@ -2,15 +2,15 @@ package hu.furediblog.service;
 
 import java.util.List;
 
-import hu.furediblog.dao.model.Authors;
-import hu.furediblog.dao.model.Entries;
+import hu.furediblog.dao.model.BlogAuthor;
+import hu.furediblog.dao.model.BlogEntry;
 
 public interface EntryService {
-	public void addEntry(Entries entry);
-	public void updateEntry(Entries entry);
-	public List<Entries> listEntries();
-	public List<Entries> authorEntriesList(int author);
-	public Entries getEntryById(int id);
+	public void addEntry(BlogEntry entry);
+	public void updateEntry(BlogEntry entry);
+	public List<BlogEntry> listEntries();
+	public List<BlogEntry> authorEntriesList(int author);
+	public BlogEntry getEntryById(int id);
 	public void removeEntry(int id);
-	public void addEntry(Authors author, String content);	
+	public void addEntry(BlogAuthor author, String content);	
 }

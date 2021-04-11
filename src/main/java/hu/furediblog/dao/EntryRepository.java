@@ -14,17 +14,17 @@ public class EntryRepository implements EntryDao{
         return DatabaseSessionProvider.getInstance().getSessionObj();
     }
 	
-    public Class<Entries> getManagedClass(){
-        return Entries.class;
+    public Class<BlogEntry> getManagedClass(){
+        return BlogEntry.class;
     }	
 			
-	public void addEntry(Entries entry) {
+	public void addEntry(BlogEntry entry) {
 	       getSession().beginTransaction();
 	       getSession().save(entry);
 	       getSession().getTransaction().commit();		
 	}
 
-	public void updateEntry(Entries entry) {
+	public void updateEntry(BlogEntry entry) {
 		 getSession().beginTransaction();
 	     getSession().update(entry);
 	     getSession().getTransaction().commit();
@@ -32,12 +32,12 @@ public class EntryRepository implements EntryDao{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Entries> listEntries() {		
+	public List<BlogEntry> listEntries() {		
 		return getSession().createQuery("from " + getManagedClass().getSimpleName()).list();
 	}
 
-	public Entries getEntryById(int id) {
-		return (Entries) getSession().get(Entries.class, id);
+	public BlogEntry getEntryById(int id) {
+		return (BlogEntry) getSession().get(BlogEntry.class, id);
 	}
 
 	public void removeEntry(int id) {
@@ -46,17 +46,17 @@ public class EntryRepository implements EntryDao{
         getSession().getTransaction().commit();				
 	}
 
-	public void addEntry(Authors author, String content) {
+	public void addEntry(BlogAuthor author, String content) {
 		 getSession().beginTransaction();
-	     getSession().save(new Entries(author, content));
+	     getSession().save(new BlogEntry(author, content));
 	     getSession().getTransaction().commit();
 		
 	}
 
-	public List<Entries> listAuthorEntries(int author) {
-		List<Entries> entryList = listEntries();
-		List<Entries> auhorEntryList = new ArrayList<Entries>();
-		for (Entries entry : entryList){
+	public List<BlogEntry> listAuthorEntries(int author) {
+		List<BlogEntry> entryList = listEntries();
+		List<BlogEntry> auhorEntryList = new ArrayList<BlogEntry>();
+		for (BlogEntry entry : entryList){
 			if (entry.getAuthor().getId() == author)
 				auhorEntryList.add(entry);
 		}

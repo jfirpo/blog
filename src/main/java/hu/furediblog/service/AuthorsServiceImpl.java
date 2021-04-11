@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import hu.furediblog.dao.AuthorDao;
-import hu.furediblog.dao.model.Authors;
-import hu.furediblog.dao.model.Entries;
+import hu.furediblog.dao.model.BlogAuthor;
+import hu.furediblog.dao.model.BlogEntry;
 
 public class AuthorsServiceImpl implements AuthorService{
 	private AuthorDao authorDao;
@@ -16,19 +16,19 @@ public class AuthorsServiceImpl implements AuthorService{
 		this.authorDao = authorDao;
 	}
 
-	public void addAuthor(Authors author) {
+	public void addAuthor(BlogAuthor author) {
 		this.authorDao.addAuthor(author);		
 	}
 
-	public void updateAuthor(Authors author) {
+	public void updateAuthor(BlogAuthor author) {
 		this.authorDao.updateAuthor(author);		
 	}
 
-	public List<Authors> listAuthors() {
+	public List<BlogAuthor> listAuthors() {
 		return this.authorDao.listAuthors();
 	}
 
-	public Authors getAuthorById(int id) {
+	public BlogAuthor getAuthorById(int id) {
 		return this.authorDao.getAuthorById(id);
 	}
 
@@ -43,11 +43,11 @@ public class AuthorsServiceImpl implements AuthorService{
 		
 	}
 */
-	public List<Authors> listActiveAuthors() {	
+	public List<BlogAuthor> listActiveAuthors() {	
 		return this.authorDao.listActiveAuthors();
 	}
 
-	public List<Entries> authorsEntries(Authors author) {
+	public List<BlogEntry> authorsEntries(BlogAuthor author) {
 		return authorDao.listauthorsEntries(author);
 	}
 }

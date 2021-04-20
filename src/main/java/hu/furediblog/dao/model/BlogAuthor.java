@@ -17,14 +17,17 @@ public class BlogAuthor{
 	@OneToMany(mappedBy = "author")
 	private List<BlogEntry> entries;	
 
+
 	public BlogAuthor() {		
 	}
 
+	public void setEntries(List<BlogEntry> entries) {
+		this.entries = entries;
+	}
 
 	public List<BlogEntry> getEntries() {
 		return entries;
 	}
-
 
 	public int getId() {
 		return id;

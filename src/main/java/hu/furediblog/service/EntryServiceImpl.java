@@ -47,5 +47,6 @@ public class EntryServiceImpl implements EntryService{
 	public List<BlogEntry> authorEntriesList(int author) {
 		// TODO Auto-generated method stub
 		return this.entryDao.listAuthorEntries(author);
+		
 	}
 }

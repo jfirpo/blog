@@ -40,6 +40,7 @@ public class EntryController{
 		return "addstory";
 	}
 
+
 	// redirect - pipa
 	@RequestMapping(path = "/addEntryToDb", method = RequestMethod.POST)
 	public ModelAndView addEntryToDb(int author, String content, Model model) {										

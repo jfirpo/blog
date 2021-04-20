@@ -21,23 +21,37 @@ public class AuthorRepository implements AuthorDao {
         return BlogAuthor.class;
     }
     
-	public void addAuthor(BlogAuthor author) {
+	@SuppressWarnings("unchecked")
+	public List<BlogAuthor> listAuthors() {		
+		return getSession().createQuery("from " + getManagedClass().getSimpleName()).list();
+	}
+	
+	public BlogAuthor getAuthorById(int id) {		
+		return (BlogAuthor) getSession().get(BlogAuthor.class, id);
+	}
+	
+    public void addAuthor(BlogAuthor author) {
 	       getSession().beginTransaction();
 	       getSession().save(author);
 	       getSession().getTransaction().commit();		
 	}
-
+	
+    public void removeAuthor(int id) {
+        getSession().beginTransaction();
+        getSession().delete(getAuthorById(id));
+        getSession().getTransaction().commit();				
+	}
+    
+    
 	public void updateAuthor(BlogAuthor author) {
         getSession().beginTransaction();
         getSession().update(author);
         getSession().getTransaction().commit();
 		
 	}
-
-	@SuppressWarnings("unchecked")
-	public List<BlogAuthor> listAuthors() {		
-		return getSession().createQuery("from " + getManagedClass().getSimpleName()).list();
-	}
+	
+	
+	// kiszedni a maradekot
 	
 	public List<BlogAuthor> listActiveAuthors() {
 		List<BlogAuthor> authors = new ArrayList<BlogAuthor>();
@@ -46,16 +60,6 @@ public class AuthorRepository implements AuthorDao {
 				authors.add(author);
 		}
 		return authors;
-	}
-	
-	public BlogAuthor getAuthorById(int id) {		
-		return (BlogAuthor) getSession().get(BlogAuthor.class, id);
-	}
-
-	public void removeAuthor(int id) {
-        getSession().beginTransaction();
-        getSession().delete(getAuthorById(id));
-        getSession().getTransaction().commit();				
 	}
 
 	public List<BlogEntry> listauthorsEntries(BlogAuthor author) {		

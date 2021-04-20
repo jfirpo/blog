@@ -1,4 +1,4 @@
-package hu.furediblog.service;
+	package hu.furediblog.service;
 
 import java.util.List;
 
@@ -7,10 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import hu.furediblog.dao.AuthorDao;
 import hu.furediblog.dao.model.BlogAuthor;
 import hu.furediblog.dao.model.BlogEntry;
+import hu.furediblog.mapper.AuthorMapper;
+
 
 public class AuthorsServiceImpl implements AuthorService{
 	private AuthorDao authorDao;
+	private AuthorMapper authorMapper;
 	
+	@Autowired
+	public void setAuthorMapper(AuthorMapper authorMapper) {
+		this.authorMapper = authorMapper;
+	}
+
 	@Autowired
 	public void setAuthorDao(AuthorDao authorDao) {
 		this.authorDao = authorDao;
@@ -42,12 +50,18 @@ public class AuthorsServiceImpl implements AuthorService{
 		return entries; // mappelt lista
 		
 	}
+	
+	public List<BlogEntry> authorsEntries(BlogAuthor author) {
+		return authorDao.listauthorsEntries(author);
+	}
 */
+	public List<BlogEntry> authorsEntries(BlogAuthor author) {
+		return authorMapper.map(author).getEntries();
+	}
+	
 	public List<BlogAuthor> listActiveAuthors() {	
 		return this.authorDao.listActiveAuthors();
 	}
 
-	public List<BlogEntry> authorsEntries(BlogAuthor author) {
-		return authorDao.listauthorsEntries(author);
-	}
+
 }

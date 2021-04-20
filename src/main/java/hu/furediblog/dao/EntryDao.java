@@ -6,12 +6,14 @@ import hu.furediblog.dao.model.BlogAuthor;
 import hu.furediblog.dao.model.BlogEntry;
 
 public interface EntryDao {
+
+	public List<BlogEntry> listEntries();	
+	public BlogEntry getEntryById(int id);
 	public void addEntry(BlogEntry entry);
 	public void updateEntry(BlogEntry entry);
-	public List<BlogEntry> listEntries();
-	public List<BlogEntry> listAuthorEntries(int author);
-	public BlogEntry getEntryById(int id);
 	public void removeEntry(int id);
+
+	public List<BlogEntry> listAuthorEntries(int author);
 	public void addEntry(BlogAuthor  author, String content);
 	
 }

@@ -1,29 +1,26 @@
 package hu.furediblog.service;
 
-
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import hu.furediblog.dao.EntryDao;
-import hu.furediblog.dao.model.BlogAuthor;
-import hu.furediblog.dao.model.BlogEntry;
+import org.springframework.stereotype.Service;
+import hu.furediblog.model.BlogAuthor;
+import hu.furediblog.model.BlogEntry;
+import hu.furediblog.model.dao.EntryDao;
 
+@Service
 public class EntryServiceImpl implements EntryService{
 	
 	private EntryDao entryDao;	
-	
-	@Autowired
+		
 	public void setEntryDao(EntryDao entryDao) {
 		this.entryDao = entryDao;
 	}
-
-	public void addEntry(BlogEntry entry) {
-		this.entryDao.addEntry(entry);
 		
+	public void addEntry(BlogEntry entry) {
+		this.entryDao.addEntry(entry);		
 	}
 
 	public void updateEntry(BlogEntry entry) {
-		this.entryDao.updateEntry(entry);
-		
+		this.entryDao.updateEntry(entry);		
 	}
 
 	public List<BlogEntry> listEntries() {		
@@ -34,19 +31,17 @@ public class EntryServiceImpl implements EntryService{
 		return this.entryDao.getEntryById(id);
 	}
 
-	public void removeEntry(int id) {
-		this.entryDao.removeEntry(id);
-		
-	}
-	
 	public void addEntry(BlogAuthor author, String content) {
-		this.entryDao.addEntry(author, content);
-		
+		this.entryDao.addEntry(author, content);		
 	}
 
 	public List<BlogEntry> authorEntriesList(int author) {
 		// TODO Auto-generated method stub
-		return this.entryDao.listAuthorEntries(author);
-		
+		return this.entryDao.listAuthorEntries(author);		
 	}
+	
+//	public void removeEntry(int id) {
+//	this.entryDao.removeEntry(id);
+//	
+//}	
 }

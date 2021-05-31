@@ -40,9 +40,6 @@ public class EntryDaoImpl implements EntryDao{
 		Transaction tx = session.beginTransaction();
 		List<BlogEntry> blogEntryList = session.createQuery("from BlogEntry").list();
 		tx.commit();
-		for (BlogEntry entry : blogEntryList) {
-			System.out.println(entry.getContent());
-		}
 		return blogEntryList;
 	}	
 

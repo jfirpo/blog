@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import hu.furediblog.model.BlogAuthor;
+import hu.furediblog.dto.BlogAuthorDto;
 import hu.furediblog.service.AuthorService;
 import hu.furediblog.service.EntryService;
 
@@ -39,26 +39,26 @@ public class AuthorController{
 	//entries az entriesService-bol authorId alapjan - pipa
 	@RequestMapping(value = "/authorDetails", method = RequestMethod.GET)
 	public String authorDetails(int id, Model model) {
-		model.addAttribute("auhorsStories", entriesService.authorEntriesList(id));
+		model.addAttribute("auhorsStories", entriesService.authorsEntries(id));
 		model.addAttribute("author", authorService.getAuthorById(id));
 		return "authorDetails";
 	}
 
 	@RequestMapping(value = "/addAuthor", method = RequestMethod.POST)
 	public ModelAndView addAuthor(String name, Model model) {
-		BlogAuthor author= new BlogAuthor();
-		author.setName(name);
-		authorService.addAuthor(author);
+		BlogAuthorDto authorDto= new BlogAuthorDto();
+		authorDto.setName(name);
+		authorService.addAuthor(authorDto);
 		return new ModelAndView("redirect:/furediBlog/authors");
 	}
 
 	//redirect - pipa
 	@RequestMapping(value = "/editAuthor", method = RequestMethod.POST)
 	public ModelAndView editAuthor(int id, String name, Model model) {
-		BlogAuthor author = new BlogAuthor();
-		author = authorService.getAuthorById(id);
-		author.setName(name);
-		authorService.updateAuthor(author);				
+		BlogAuthorDto authorDto = new BlogAuthorDto();
+		authorDto = authorService.getAuthorById(id);
+		authorDto.setName(name);
+		authorService.updateAuthor(authorDto);				
 		model.addAttribute("authors", authorService.listAuthors());
 		return new ModelAndView("redirect:/furediBlog/authors");
 	}

@@ -1,45 +1,56 @@
 package hu.furediblog.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import hu.furediblog.dto.BlogAuthorDto;
+import hu.furediblog.mapper.AuthorMapper;
+import hu.furediblog.mapper.AuthorMapperImpl;
 import hu.furediblog.model.BlogAuthor;
 import hu.furediblog.model.dao.AuthorDao;
 
 @Service
 public class AuthorsServiceImpl implements AuthorService{
 	private AuthorDao authorDao;
-//	private AuthorMapper authorMapper;
-	
-//	@Autowired
-//	public void setAuthorMapper(AuthorMapper authorMapper) {
-//		this.authorMapper = authorMapper;
-//	}
-
+	AuthorMapper authorMapper = new AuthorMapperImpl();
 
 	public void setAuthorDao(AuthorDao authorDao) {
 		this.authorDao = authorDao;
 	}
+	public List<BlogAuthorDto> listAuthors() {
+		List<BlogAuthorDto> blogAuthorListDto = new ArrayList<BlogAuthorDto>();	
+		for (BlogAuthor author : this.authorDao.listAuthors()) {
+			BlogAuthorDto authorDto = authorMapper.map(author);
+			blogAuthorListDto.add(authorDto);
+		}
+		return blogAuthorListDto;
+	}
+
+	public List<BlogAuthorDto> listActiveAuthors() {	
+		List<BlogAuthorDto> blogActiveAuthorListDto = new ArrayList<BlogAuthorDto>();				
+		for (BlogAuthor author : this.authorDao.listActiveAuthors()) {
+			blogActiveAuthorListDto.add(authorMapper.map(author));
+		} 
+		
+		return blogActiveAuthorListDto;
+	}
 	
-	public void addAuthor(BlogAuthor author) {
-		this.authorDao.addAuthor(author);		
-	}
-
-	public void updateAuthor(BlogAuthor author) {
-		this.authorDao.updateAuthor(author);		
+	public BlogAuthorDto getAuthorById(int id) {
+		return authorMapper.map(this.authorDao.getAuthorById(id));
 	}
 	
-	public List<BlogAuthor> listAuthors() {
-		return this.authorDao.listAuthors();
+	
+	public void addAuthor(BlogAuthorDto authorDto) {		
+		this.authorDao.addAuthor(authorMapper.map(authorDto));		
 	}
 
-	public BlogAuthor getAuthorById(int id) {
-		return this.authorDao.getAuthorById(id);
+	public void updateAuthor(BlogAuthorDto authorDto){
+		this.authorDao.updateAuthor(authorMapper.map(authorDto));		
 	}
-
-//	public void removeAuthor(int id) {
-//		this.authorDao.removeAuthor(id);		
-//	}
+			
+/// atviszem az enrtyServicebe.. Rakerdezni!!!!!!!!!!!!!!!!!
 /*
 	public List<BlogEntryDto> authorsEntries(Authors author) {
 		List<Entries> entries = this.authorDao.getAuthorById(author.getId()).getEntries();
@@ -52,10 +63,4 @@ public class AuthorsServiceImpl implements AuthorService{
 		return authorDao.listauthorsEntries(author);
 	}
 */
-//	public List<BlogEntry> authorsEntries(BlogAuthor author) {
-//		return authorMapper.map(author).getEntries();
-//	}
-	public List<BlogAuthor> listActiveAuthors() {	
-		return this.authorDao.listActiveAuthors();
-	}
 }

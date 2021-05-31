@@ -3,7 +3,6 @@ hu\furediblog\model\BlogEntry.class
 hu\furediblog\mapper\AuthorMapper.class
 hu\furediblog\controller\AuthorController.class
 hu\furediblog\dto\BlogEntryDto.class
-hu\furediblog\model\dao\DatabaseSessionProvider.class
 hu\furediblog\model\dao\AuthorDao.class
 hu\furediblog\service\AuthorsServiceImpl.class
 hu\furediblog\model\BlogAuthor.class

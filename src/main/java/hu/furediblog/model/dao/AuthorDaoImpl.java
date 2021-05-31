@@ -13,12 +13,10 @@ import hu.furediblog.model.BlogAuthor;
 public class AuthorDaoImpl implements AuthorDao {
 		
 	private SessionFactory sessionFactory;
-	
-	
+		
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
 	
 	//@Override
 	public void addAuthor(BlogAuthor blogAuthor) {

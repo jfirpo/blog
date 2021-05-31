@@ -2,15 +2,15 @@ package hu.furediblog.service;
 
 import java.util.List;
 
-import hu.furediblog.model.BlogAuthor;
+import hu.furediblog.dto.BlogAuthorDto;
 
 public interface AuthorService {
-	public void addAuthor(BlogAuthor author);
-	public void updateAuthor(BlogAuthor author);
-	public List<BlogAuthor> listAuthors();
-	public BlogAuthor getAuthorById(int id);
+	public void addAuthor(BlogAuthorDto authorDto);
+	public void updateAuthor(BlogAuthorDto authorDto);	
+	public List<BlogAuthorDto> listAuthors();
+	public BlogAuthorDto getAuthorById(int id);
 	//public List<BlogEntry> authorsEntries(BlogAuthor author);
-	public List<BlogAuthor> listActiveAuthors();
+	public List<BlogAuthorDto> listActiveAuthors();
 	
 //	public void removeAuthor(int id);	
 }

@@ -59,7 +59,6 @@ public class AuthorController{
 		authorDto = authorService.getAuthorById(id);
 		authorDto.setName(name);
 		authorService.updateAuthor(authorDto);				
-		model.addAttribute("authors", authorService.listAuthors());
 		return new ModelAndView("redirect:/furediBlog/authors");
 	}
 }

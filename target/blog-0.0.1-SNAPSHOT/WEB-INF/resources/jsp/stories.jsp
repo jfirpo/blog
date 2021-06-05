@@ -22,11 +22,12 @@
 			<c:forEach items="${entries}" var="entry">
 				<header>
 					<h1>a Story</h1>
-					<p><c:out value="${entry.created}" /></p>
+					<p><c:out value="${entry.created}" /></p>					
 				</header>
 
 				<section>
-					<p><c:out value="${entry.content}" /></p>					
+					<p><c:out value="${entry.content}" /></p>
+					
 				</section>
 
 				<footer>

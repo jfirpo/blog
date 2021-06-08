@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import hu.furediblog.model.BlogAuthor;
 import hu.furediblog.model.BlogEntry;
 
-@Repository
+
 public class EntryDaoImpl implements EntryDao{
 
 	private SessionFactory sessionFactory;

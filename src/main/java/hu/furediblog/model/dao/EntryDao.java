@@ -2,8 +2,10 @@ package hu.furediblog.model.dao;
 
 import java.util.List;
 
+
 import hu.furediblog.model.BlogAuthor;
 import hu.furediblog.model.BlogEntry;
+
 
 public interface EntryDao {
 
